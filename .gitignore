@@ -1,0 +1,114 @@
+# .gitignore for .NET projects (C#, F#, VB) and common tooling
+# Generated for a .NET / F# project – covers build outputs, IDE, OS-specific, and tooling files
+
+# Build artifacts
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+
+# Rider
+.idea/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+*.nupkg
+**/packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# paket
+.paket/
+paket-files/
+.paket/paket.exe
+paket.dependencies
+paket.lock
+
+# Dotnet publish output
+publish/
+artifacts/
+
+# User-specific files
+*.suo
+*.user
+*.userprefs
+*.workstation
+
+# Coverage and Test Results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Mono
+*.pidb
+*.userprefs
+
+# JetBrains Rider caches
+.idea/
+
+# npm / frontend build outputs (if using UI code in the repo)
+node_modules/
+**/node_modules/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# Generated files
+*.generated.cs
+*.g.cs
+*.g.i.cs
+
+# Debug symbols and outputs
+*.pdb
+*.mdb
+
+# Other
+*.swp
+*.swo
+
+# Azure Functions local settings
+local.settings.json
+
+# Secrets
+secrets.json
+
+# Ignore compiled application files
+*.dll
+*.exe
+*.so
+*.dylib
+
+# Ignore native image cache for .NET
+*.ni.*
+
+# Ignore NuGet package folders created by CI
+**/packages/**/build/
+
+# End of .gitignore
