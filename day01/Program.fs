@@ -13,15 +13,15 @@ let res =
                     | 'R' -> curr + turn
             let asdf2 = 
                 match asdf with
-                    | x when x < 0 -> 99 + x
-                    | x when x > 99 -> x - 99
+                    | x when x < 0 -> 99 - (99 - x) % 100
+                    | x when x > 99 -> 99 - (x - 99) % 100
                     | x -> x
             Console.WriteLine(asdf2)
             let sum2 = 
                 match asdf2 with
                     | 0 -> sum + 1
                     | _ -> sum
-            (asdf, sum2)
+            (asdf2, sum2)
         ) (50, 0)
 
 Console.WriteLine(res)
