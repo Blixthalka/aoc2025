@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xu9w3yYV3/g=",
+  "success": true,
+  "projectFilePath": "/Users/emil/git/aoc2025/day01/day01.fsproj",
+  "expectedPackageFiles": [
+    "/Users/emil/.nuget/packages/fsharp.core/10.0.100/fsharp.core.10.0.100.nupkg.sha512"
+  ],
+  "logs": []
+}
