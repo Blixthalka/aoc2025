@@ -1,8 +1,8 @@
 ﻿open System
 open System.IO
 
-let (_, password1) = 
-    File.ReadAllLines("data_1.txt")
+let _, password1 = 
+    File.ReadAllLines "data.txt"
         |> Seq.map (fun line -> line[0], Int32.Parse(line[1..]))
         |> Seq.fold (fun (pos, sum)  (dir, turn) -> 
             let new_pos = 
@@ -17,7 +17,7 @@ let (_, password1) =
                 match new_pos with
                     | 0 -> sum + 1
                     | _ -> sum
-            (new_pos, new_sum)
+            new_pos, new_sum
         ) (50, 0)
 
 Console.WriteLine("password1: " + password1.ToString())
@@ -32,8 +32,8 @@ let rec do_turn (turns: int) (turn_dir: int) (pos: int) (passed: int) =
             do_turn  (turns - 1) turn_dir new_pos new_passed
          
 
-let (_, password2) = 
-    File.ReadAllLines("data_1.txt")
+let _, password2 = 
+    File.ReadAllLines "data.txt"
         |> Seq.map (fun line -> line[0], Int32.Parse(line[1..]))
         |> Seq.fold (fun (pos, cur_sum)  (dir, turns) -> 
             let turn_dir = if dir = 'L' then -1 else 1
