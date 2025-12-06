@@ -1,8 +1,6 @@
 ﻿open System
 open System.IO
 
-
-
 let file = File.ReadAllLines "data.txt"
         |> Array.map (fun line -> line.ToCharArray())
 
@@ -11,9 +9,6 @@ let create_coord_seq (y_min: int) (y_max: int) (x_min : int) (x_max: int) =
             |> Seq.collect (fun y -> seq {x_min..x_max}
                                     |> Seq.map (fun x -> y, x))
 
-let print_file () =
-    file |> Array.iter (fun row -> Console.WriteLine(System.String(row)))
-
 let count_neighbours (y : int) (x: int) = 
     create_coord_seq (y - 1) (y + 1) (x - 1) (x + 1)
         |> Seq.filter (fun (cy, cx) -> not (cy = y && cx = x))
@@ -21,30 +16,23 @@ let count_neighbours (y : int) (x: int) =
         |> Seq.filter (fun (cy, cx) -> file[cy][cx] = '@')
         |> Seq.length
 
-let removed_1 = create_coord_seq 0 (file.Length - 1) 0 (file[0].Length - 1)
-                |> Seq.filter (fun (y, x) -> file[y][x] = '@')
-                |> Seq.filter (fun (y, x) -> count_neighbours y x < 4)
-                |> Seq.length
-
-
-Console.WriteLine $"part1: {removed_1}"
-
-let rec do_remove () = 
-    let removed_items = create_coord_seq 0 (file.Length - 1) 0 (file[0].Length - 1)
+let find_removable_rolls() = 
+    create_coord_seq 0 (file.Length - 1) 0 (file[0].Length - 1)
                         |> Seq.filter (fun (y, x) -> file[y][x] = '@')
                         |> Seq.filter (fun (y, x) -> count_neighbours y x < 4)
                         |> Seq.toArray
 
-    let removed = removed_items |> Array.length
-    removed_items |> Array.iter (fun (y, x) -> file[y][x] <- 'x')
+Console.WriteLine $"part1: {find_removable_rolls() |> Array.length}"
+
+let rec do_remove_rolls () = 
+    let rolls= find_removable_rolls()
+
+    let removed = rolls |> Array.length
+    rolls |> Array.iter (fun (y, x) -> file[y][x] <- '.')
 
     if removed = 0 then 
-        removed
+        0
     else 
-        removed + do_remove() 
+        removed + do_remove_rolls() 
 
-
-let removed_2 = do_remove()
-
-
-Console.WriteLine $"part2: {removed_2}"
+Console.WriteLine $"part2: {do_remove_rolls()}"
